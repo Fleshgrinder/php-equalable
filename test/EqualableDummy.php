@@ -19,9 +19,21 @@ namespace Fleshgrinder\Core;
 final class EqualableDummy implements Equalable {
 
     /**
-     * @var boolean
+     * The value that should be returned by the dummy's equals method.
+     *
+     * @var mixed
      */
-    public $equals = true;
+    public $equals;
+
+    /**
+     * Construct new equalable dummy instance.
+     *
+     * @param mixed $equals [optional]
+     *     The value that should be returned by this instance.
+     */
+    public function __construct($equals = true) {
+        $this->equals = $equals;
+    }
 
     /**
      * @inheritDoc

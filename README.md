@@ -1,3 +1,5 @@
+[![Packagist](https://img.shields.io/packagist/v/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
+[![Packagist License](https://img.shields.io/packagist/l/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
 # Equalable
 Interface to implement custom equality for classes instead of relying on PHP’s comparison operators that might not
  determine the equality of an instance correctly.

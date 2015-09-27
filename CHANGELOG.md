@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased][unreleased]
 
-## 0.1.0 - 2015-08-27
+## [0.1.0] - 2015-08-27
 ### Added
 - Constructor to dummy for shorter initialization.
 ### Removed
@@ -15,4 +15,4 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Initial Release
 
 [unreleased]: https://github.com/Fleshgrinder/php-equalable/compare/v0.1.0...HEAD
-[0.0.0]: https://github.com/Fleshgrinder/php-equalable/compare/v0.0.0...v0.1.0
+[0.1.0]: https://github.com/Fleshgrinder/php-equalable/compare/v0.0.0...v0.1.0

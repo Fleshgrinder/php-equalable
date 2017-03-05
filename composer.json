@@ -1,21 +1,23 @@
 {
     "name": "fleshgrinder/equalable",
-    "description": "Interface for custom equality checks of objects.",
-    "license": "MIT",
+    "description": "Interface for custom equality determination of objects.",
+    "license": "Unlicense",
     "authors": [
         {
             "name": "Richard Fussenegger",
             "email": "fleshgrinder@users.noreply.github.com"
         }
     ],
+	"require": {
+		"php": "^7.0"
+	},
     "autoload": {
         "psr-4": {
             "Fleshgrinder\\Core\\": "src/"
         }
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Fleshgrinder\\Core\\": "test/"
-        }
-    }
+	"suggest": {
+		"fleshgrinder/core": "To disable undesirable default behavior of PHP objects.",
+		"fleshgrinder/comparable": "For a consistent and type safe comparison contract for objects."
+	}
 }

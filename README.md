@@ -1,42 +1,67 @@
 [![Packagist](https://img.shields.io/packagist/v/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
 [![Packagist License](https://img.shields.io/packagist/l/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
 # Equalable
-Interface to implement custom equality for classes instead of relying on PHP’s comparison operators that might not
- determine the equality of an instance correctly.
- 
-Provided is the interface itself that establishes the contract that implementing classes have to have the equals method.
- As well as a dummy class that can be used in tests as a substitute for doubles, stubs, or mocks.
+The **equalable** library provides a single interface that defines a method
+ that implementing classes can use to provide custom equality determination.
+ This is useful for value objects and entities alike, since the former might
+ want to allow equality checks against scalar types, and the latter need to
+ exclude all encapsulated values from the equality determination which are not
+ part of their identity defining values.
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
 
 ## Installation
-Open a terminal, enter your project directory and execute the following command to add this package to your
- dependencies:
+Open a terminal, enter your project directory and execute the following command
+ to add this package to your dependencies:
 
 ```bash
-$ composer require fleshgrinder/equalable
+composer require fleshgrinder/equalable
 ```
 
-This command requires you to have Composer installed globally, as explained in the
- [installation chapter](https://getcomposer.org/doc/00-intro.md) of the Composer documentation.
+This command requires you to have Composer installed globally, as explained in
+ the [installation chapter](https://getcomposer.org/doc/00-intro.md) of the
+ Composer documentation.
 
 ## Usage
-Simply implement the interface and the required `equals` method.
+Simply implement the interface and the required `equals` method. The actual
+ implementation of the method’s body depends on the use-case. Value objects
+ for instance might want to allow equality checks against scalar types, e.g.:
 
 ```php
-class YourClass implements Equalable {
+final class UserId implements Equalable {
+	private $uid;
 
-    /**
-     * @inheritDoc
-     */
-    public function equals($value) {
-        if (is_object($value)) {
-            return $value instanceof $this && $value === $this->value;
-        }
-        
-        return $value === $this->value;
-    }
+	// ...
 
+	public function equals($other): bool {
+		if ($other instanceof $this) {
+			$other = $other->uid;
+		}
+
+		return \is_int($other) && $this->uid === $other;
+	}
 }
 ```
 
-## License
-[![MIT License](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/License_icon-mit.svg/48px-License_icon-mit.svg.png)](https://opensource.org/licenses/MIT)
+Entities on the other hand want to exclude all encapsulated values which are
+ not part of their identity defining values from the determination, e.g.:
+
+```php
+final class User implements Equalable {
+	private $uid;
+	private $name;
+	private $email;
+
+	// ...
+
+	public function equals($other): bool {
+		return $other instanceof $this && $this->uid->equals($other->uid);
+	}
+}
+```
+
+## Testing
+There are not tests since this library provides a single interface, which
+ obviously has no implementation.

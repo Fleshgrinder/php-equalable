@@ -1,5 +1,6 @@
-[![Packagist](https://img.shields.io/packagist/v/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
-[![Packagist License](https://img.shields.io/packagist/l/Fleshgrinder/equalable.svg?style=flat-square)](https://packagist.org/packages/fleshgrinder/equalable)
+[![Latest Stable Version](https://poser.pugx.org/fleshgrinder/equalable/v/stable)](https://packagist.org/packages/fleshgrinder/equalable)
+[![License](https://poser.pugx.org/fleshgrinder/equalable/license)](https://packagist.org/packages/fleshgrinder/equalable)
+[![Total Downloads](https://poser.pugx.org/fleshgrinder/equalable/downloads)](https://packagist.org/packages/fleshgrinder/equalable)
 # Equalable
 The **equalable** library provides a single interface that defines a method
  that implementing classes can use to provide custom equality determination.
